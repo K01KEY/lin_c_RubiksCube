@@ -554,6 +554,8 @@ int test_cube(void) {
 	char SHOKI[MEN][ROW][COL];
 	char cmd1[CMD_LEN] = "";
 	char cmd2[CMD_LEN] = "";
+	//
+	fprintf(fp, "*** テストを実行します ***\n");
 
 	// memcpyで配列をコピー  
 	memcpy(SHOKI, CUBE_CLR, sizeof(CUBE_CLR));
@@ -567,11 +569,11 @@ int test_cube(void) {
 		}
 		else {
 			for (int i = 0; i < CMD_LEN; i++) {
-				cmd1[i] = cmdtbl[cmdctr - 1][i];
-				cmd2[i] = cmdtbl[cmdctr][i];
+				cmd2[i] = cmdtbl[cmdctr - 1][i];
+				cmd1[i] = cmdtbl[cmdctr][i];
 			}
 		}
-		//printf("%d回目 cmd1=%s cmd2=%s\n", cmdctr, cmd1, cmd2);
+		fprintf(fp, "%d回目 cmd1=%s cmd2=%s (行って来い+その後４回転)\n", cmdctr, cmd1, cmd2);
 		move_cube(cmd1);
 		print_cube();
 		usleep(500 * 1000);
